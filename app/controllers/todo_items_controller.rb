@@ -3,10 +3,10 @@ class TodoItemsController < ApplicationController
   # GET /todo_items.json
   def index
 
-    if params[:completed]
+    if params.has_key? :completed
       @todo_items = TodoItem.where(:completed => params[:completed])
     else
-      @todo_items = TodoItem.all
+      @todo_items = TodoItem.order(:completed)
     end
 
     respond_to do |format|
