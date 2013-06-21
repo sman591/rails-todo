@@ -8,7 +8,7 @@ Todo::Application.routes.draw do
   match '/all'            => 'todo_items#index'
   match '/all/incomplete' => 'todo_items#index', :completed => false
   match '/all/complete'   => 'todo_items#index', :completed => true
-  
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
