@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Todo List</title>
+  <title>To-Do List</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
@@ -17,7 +18,7 @@
       <li><a href="/all/complete">Complete</a></li>
       <li><a href="/new" class="btn btn-info"><i class="icon-white icon-plus"></i> New Todo</a><li>
     </ul>
-    <h3 class="muted"><a href="/">Todo List</a></h3>
+    <h3 class="muted"><a href="/">To-Do List</a></h3>
   </div>
 
   <hr>
