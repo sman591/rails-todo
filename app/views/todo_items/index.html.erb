@@ -1,0 +1,21 @@
+<h2>All Todos</h2>
+
+<table class="table table-striped">
+
+  <tr>
+    <th>Check</th>
+    <th>Title</th>
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
+
+  <% @todo_items.each do |todo| %>
+    <tr>
+      <td><%= check_box "todo", :completed %></td>
+      <td><%= link_to todo.title, todo %></td>
+      <td><%= link_to raw('<i class="icon-pencil"></i>'), edit_todo_item_path(todo), :class => "btn" %></td>
+      <td><%= link_to raw('<i class="icon-white icon-trash"></i>'), todo, :method => :delete, :class => "btn btn-danger" %></td>
+    </tr>
+  <% end %>
+
+</table>

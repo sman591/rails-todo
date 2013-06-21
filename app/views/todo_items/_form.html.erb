@@ -1,0 +1,36 @@
+<%= form_for @todo_item, :html => {:class => 'form-horizontal'} do |f| %>
+
+  <% if @todo_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@todo_item.errors.count, "error") %> prohibited this todo_item from being saved:</h2>
+
+      <ul>
+      <% @todo_item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :title, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :completed, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.check_box :completed %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :notes, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :notes %>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit :class => 'btn btn-primary', :disable_with => "Saving..." %>
+  </div>
+<% end %>
