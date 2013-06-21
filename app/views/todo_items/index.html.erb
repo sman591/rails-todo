@@ -1,4 +1,4 @@
-<h2>All Todos</h2>
+<h2 class="page-header">All Todos</h2>
 
 <table class="table table-striped">
 
@@ -11,10 +11,19 @@
 
   <% @todo_items.each do |todo| %>
     <tr>
-      <td><%= check_box "todo", :completed %></td>
-      <td><%= link_to todo.title, todo %></td>
-      <td><%= link_to raw('<i class="icon-pencil"></i>'), edit_todo_item_path(todo), :class => "btn" %></td>
-      <td><%= link_to raw('<i class="icon-white icon-trash"></i>'), todo, :method => :delete, :class => "btn btn-danger" %></td>
+      <td>
+        <%= check_box_tag "completed", "1", todo.completed, :class => 'regular-checkbox' %>
+        <%= label :completed, "completed", raw("&nbsp;") %>
+      </td>
+      <td>
+        <%= link_to todo.title, todo %>
+      </td>
+      <td>
+        <%= link_to raw('<i class="icon-pencil"></i>'), edit_todo_item_path(todo), :class => "btn" %>
+      </td>
+      <td>
+        <%= link_to raw('<i class="icon-white icon-trash"></i>'), todo, :method => :delete, :class => "btn btn-danger" %>
+      </td>
     </tr>
   <% end %>
 

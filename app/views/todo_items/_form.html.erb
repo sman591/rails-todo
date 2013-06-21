@@ -1,4 +1,4 @@
-<%= form_for @todo_item, :html => {:class => 'form-horizontal'} do |f| %>
+<%= form_for @todo_item do |f| %>
 
   <% if @todo_item.errors.any? %>
     <div id="error_explanation">
@@ -12,25 +12,23 @@
     </div>
   <% end %>
 
-  <div class="control-group">
-    <%= f.label :title, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :title %>
+  <div class="page-header row-fluid">
+    <div class="span1">
+      <%= f.check_box :completed, :class => 'regular-checkbox' %>
+      <%= f.label :completed, raw("&nbsp;"), :style => 'margin-left: 11px' %>
     </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :completed, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.check_box :completed %>
+    <div class="span11">
+      <%= f.text_field :title, :class => 'span12', :style => 'font-size: 24px', :placeholder => 'Title' %>
     </div>
-  </div>
+  </div> 
   <div class="control-group">
-    <%= f.label :notes, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_area :notes %>
+      <%= f.text_area :notes, :placeholder => "Notes", :class => "span12" %>
     </div>
   </div>
   <div class="form-actions">
     <%= f.submit :class => 'btn btn-primary', :disable_with => "Saving..." %>
+    <%= link_to raw('<i class="icon-chevron-left"></i> Back'), @todo_item, :class => 'btn' %>
+    <%= link_to raw('<i class="icon-th-list"></i> List'), todo_items_path, :class => 'btn' %>
   </div>
 <% end %>

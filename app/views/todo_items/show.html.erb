@@ -1,20 +1,18 @@
-<p id="notice"><%= notice %></p>
+<div class="page-header row-fluid">
+	<div class="span1">
+      <%= check_box_tag "completed", "1", @todo_item.completed, :class => 'regular-checkbox' %>
+      <%= label :completed, "completed", raw("&nbsp;"), :style => 'margin-top: 16px; margin-left: 13px'%>
+    </div>
+    <div class="span11">
+      <h3><%= @todo_item.title %></h3>
+    </div>
+</div>
 
-<p>
-  <b>Title:</b>
-  <%= @todo_item.title %>
-</p>
+<% if !@todo_item.notes.empty? %>
+	<p><%= @todo_item.notes %></p>
+<% end %>
 
-<p>
-  <b>Completed:</b>
-  <%= @todo_item.completed %>
-</p>
-
-<p>
-  <b>Notes:</b>
-  <%= @todo_item.notes %>
-</p>
-
-
-<%= link_to 'Edit', edit_todo_item_path(@todo_item) %> |
-<%= link_to 'Back', todo_items_path %>
+<div class="form-actions">
+	<%= link_to raw('<i class="icon-chevron-left"></i> Back'), todo_items_path, :class => 'btn'%>
+	<%= link_to raw('<i class="icon-pencil"></i> Edit'), edit_todo_item_path(@todo_item), :class => 'btn' %> 
+</div>

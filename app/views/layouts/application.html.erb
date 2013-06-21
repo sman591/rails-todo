@@ -24,6 +24,10 @@
 
   <div class="row-fluid">
 
+	<% if flash[:notice] %>
+		<div class="alert alert-success"><%= notice %></div>
+	<% end %>
+  	
   	<%= yield %>
 
   </div>
