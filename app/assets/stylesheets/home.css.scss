@@ -44,3 +44,7 @@ margin-top: 28px;
 .nav>li>a.btn-info:visited {
 	color: #fff;
 }
+
+.complete, .complete:hover {
+	text-decoration: line-through;
+}

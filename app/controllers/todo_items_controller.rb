@@ -74,6 +74,18 @@ class TodoItemsController < ApplicationController
     end
   end
 
+  # PUT /todo_items/complete/1
+  def complete
+    @todo_item = TodoItem.find(params[:id])
+
+    @todo_item.completed = (params[:completed] == '1' ? true : false);
+
+    @todo_item.save;
+
+    head :no_content
+
+  end;
+
   # DELETE /todo_items/1
   # DELETE /todo_items/1.json
   def destroy

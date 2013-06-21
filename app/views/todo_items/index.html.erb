@@ -1,4 +1,4 @@
-<h2 class="page-header">All Todos</h2>
+<h2 class="page-header"><%= params[:completed] == nil ? 'All' : (params[:completed] == true ? 'Completed' : 'Incomplete') %> Todos</h2>
 
 <table class="table table-striped">
 
@@ -12,11 +12,12 @@
   <% @todo_items.each do |todo| %>
     <tr>
       <td>
-        <%= check_box_tag "completed", "1", todo.completed, :class => 'regular-checkbox' %>
-        <%= label :completed, "completed", raw("&nbsp;") %>
+        <%= check_box_tag "todo_item[" + todo.id.to_s + "][completed]", "1", todo.completed, :class => 'regular-checkbox' %>
+        <%= label "todo_item[" + todo.id.to_s + "]", "completed", raw("&nbsp;") %>
+        <%= hidden_field_tag("todo_item[" + todo.id.to_s + "][completed][id]", todo.id) %>
       </td>
       <td>
-        <%= link_to todo.title, todo %>
+        <%= link_to todo.title, todo, :class => (todo.completed ? 'complete' : 'incomplete') %>
       </td>
       <td>
         <%= link_to raw('<i class="icon-pencil"></i>'), edit_todo_item_path(todo), :class => "btn" %>

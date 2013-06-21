@@ -1,7 +1,8 @@
 <div class="page-header row-fluid">
 	<div class="span1">
-      <%= check_box_tag "completed", "1", @todo_item.completed, :class => 'regular-checkbox' %>
-      <%= label :completed, "completed", raw("&nbsp;"), :style => 'margin-top: 16px; margin-left: 13px'%>
+      <%= check_box_tag "todo_item[" + @todo_item.id.to_s + "][completed]", "1", @todo_item.completed, :class => 'regular-checkbox' %>
+      <%= label "todo_item[" + @todo_item.id.to_s + "]", "completed", raw("&nbsp;"), :style => 'margin-top: 16px; margin-left: 13px' %>
+      <%= hidden_field_tag("todo_item[" + @todo_item.id.to_s + "][completed][id]", @todo_item.id) %>
     </div>
     <div class="span11">
       <h3><%= @todo_item.title %></h3>
