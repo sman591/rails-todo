@@ -5,11 +5,13 @@
       <%= hidden_field_tag("todo_item[" + @todo_item.id.to_s + "][completed][id]", @todo_item.id) %>
     </div>
     <div class="span11">
-      <h3><%= @todo_item.title %></h3>
+      <h3<%= if @todo_item.completed?
+          raw(' class="complete"')
+          end %>><%= @todo_item.title %></h3>
     </div>
 </div>
 
-<% if !@todo_item.notes.empty? %>
+<% unless @todo_item.notes.empty? %>
 	<p><%= @todo_item.notes %></p>
 <% end %>
 
