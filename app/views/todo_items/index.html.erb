@@ -36,9 +36,13 @@
     <div class="cake pull-left"></div>
     <h5>Congratulations, you completed everything! <br>Here's some cake to celebrate.</h5>
   
-  <% else %>
+  <% elseif params[:completed] == nil %>
 
     <h5>Oh no, you've run out of things to do! Quickly, <%= link_to raw('Create a new one!'), new_todo_item_path, :class => "btn btn-info" %>
+
+  <% else %>
+
+    <h5>Looks like you haven't completed anything. Better get to work!</h5>
 
   <% end %>
 <% end %>
