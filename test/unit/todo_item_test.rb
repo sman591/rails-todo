@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class TodoItemTest < ActiveSupport::TestCase
-  test "the truth" do
-    assert true
+  test "Do not allow todos without title" do
+  	item = TodoItem.new
+  	assert !item.save, "Saved item without a title"
   end
 end
