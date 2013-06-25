@@ -27,7 +27,9 @@
   </div>
   <div class="form-actions">
     <%= f.submit :class => 'btn btn-primary', :disable_with => "Saving..." %>
-    <%= link_to raw('<i class="icon-chevron-left"></i> Back'), @todo_item, :class => 'btn' %>
+    <%= if params[:action] != 'new'
+      link_to raw('<i class="icon-chevron-left"></i> Back'), @todo_item, :class => 'btn'
+    end %>
     <%= link_to raw('<i class="icon-th-list"></i> List'), todo_items_path, :class => 'btn' %>
     <%= if params[:action] != 'new'
         link_to raw('<i class="icon-trash icon-white"></i>&nbsp;Delete'), @todo_item, :method => :delete, :class => 'btn btn-danger'
