@@ -18,7 +18,12 @@ class TodoItemsController < ApplicationController
   # GET /todo_items/1
   # GET /todo_items/1.json
   def show
-    @todo_item = TodoItem.find(params[:id])
+    begin
+      @todo_item = TodoItem.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      flash[:error] = "To-Do item not found"
+      return redirect_to :action => 'index'
+    end
 
     respond_to do |format|
       format.html # show.html.erb
