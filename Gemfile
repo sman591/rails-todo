@@ -21,6 +21,19 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :development do 
+
+	gem 'better_errors'
+	gem 'minitest'
+
+end
+
+group :development, :test do 
+
+	gem 'turn'
+
+end
+
 gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
