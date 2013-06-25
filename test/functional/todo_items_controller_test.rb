@@ -11,6 +11,16 @@ class TodoItemsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:todo_items)
   end
 
+  test "should only list complete items" do
+    get(:index, { :completed => true })
+    assert_select "tbody tr", 1 # TodoItem.where(:completed => true).count
+  end
+
+  test "should only list incomplete items" do
+    get(:index, { :completed => false })
+    assert_select "tbody tr", 1 # TodoItem.where(:completed => false).count
+  end
+
   test "should get new" do
     get :new
     assert_response :success
