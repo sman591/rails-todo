@@ -2,31 +2,34 @@
 
 <table class="table table-striped">
 
-  <tr>
-    <th>Check</th>
-    <th>Title</th>
-    <th>Edit</th>
-    <th>Delete</th>
-  </tr>
-
-  <% @todo_items.each do |todo| %>
+  <thead>
     <tr>
-      <td>
-        <%= check_box_tag "todo_item[" + todo.id.to_s + "][completed]", "1", todo.completed, :class => 'regular-checkbox' %>
-        <%= label "todo_item[" + todo.id.to_s + "]", "completed", raw("&nbsp;") %>
-        <%= hidden_field_tag("todo_item[" + todo.id.to_s + "][completed][id]", todo.id) %>
-      </td>
-      <td>
-        <%= link_to todo.title, todo, :class => (todo.completed ? 'complete' : 'incomplete') %>
-      </td>
-      <td>
-        <%= link_to raw('<i class="icon-pencil"></i>'), edit_todo_item_path(todo), :class => "btn" %>
-      </td>
-      <td>
-        <%= link_to raw('<i class="icon-white icon-trash"></i>'), todo, :method => :delete, :class => "btn btn-danger" %>
-      </td>
+      <th>Check</th>
+      <th>Title</th>
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
-  <% end %>
+  </thead>
+  <tbody>
+    <% @todo_items.each do |todo| %>
+      <tr>
+        <td>
+          <%= check_box_tag "todo_item[" + todo.id.to_s + "][completed]", "1", todo.completed, :class => 'regular-checkbox' %>
+          <%= label "todo_item[" + todo.id.to_s + "]", "completed", raw("&nbsp;") %>
+          <%= hidden_field_tag("todo_item[" + todo.id.to_s + "][completed][id]", todo.id) %>
+        </td>
+        <td>
+          <%= link_to todo.title, todo, :class => (todo.completed ? 'complete' : 'incomplete') %>
+        </td>
+        <td>
+          <%= link_to raw('<i class="icon-pencil"></i>'), edit_todo_item_path(todo), :class => "btn" %>
+        </td>
+        <td>
+          <%= link_to raw('<i class="icon-white icon-trash"></i>'), todo, :method => :delete, :class => "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 
 </table>
 
@@ -36,7 +39,8 @@
     <div class="cake pull-left"></div>
     <h5>Congratulations, you completed everything! <br>Here's some cake to celebrate.</h5>
   
-  <% elseif params[:completed] == nil %>
+  <% end
+  if params[:completed] == nil %>
 
     <h5>Oh no, you've run out of things to do! Quickly, <%= link_to raw('Create a new one!'), new_todo_item_path, :class => "btn btn-info" %>
 
