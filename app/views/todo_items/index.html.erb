@@ -33,14 +33,19 @@
 
 </table>
 
-<% if @todo_items.empty? %>
+<% unless @todo_items.empty? %>
+  <div class="well">
+    <button class="btn check-all"><i class="icon-check"> &nbsp;Complete All</i></button>&nbsp;
+    <button class="btn uncheck-all"><i class="icon-check-empty"> &nbsp;Uncomplete All</i></button>
+  </div>
+<% else %>
   <% if params[:completed] == false %>
 
     <div class="cake pull-left"></div>
     <h5>Congratulations, you completed everything! <br>Here's some cake to celebrate.</h5>
   
-  <% end
-  if params[:completed] == nil %>
+  <%
+  elsif params[:completed] == nil %>
 
     <h5>Oh no, you've run out of things to do! Quickly, <%= link_to raw('Create a new one!'), new_todo_item_path, :class => "btn btn-info" %>
 
