@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
+  id: 1
   title: MyString
   completed: false
   notes: MyText
 
 two:
+  id: 2
   title: MyString
   completed: true
   notes: MyText
