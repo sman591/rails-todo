@@ -32,8 +32,13 @@
 
     if ($(checkbox).is(':checked')) {
       
-      $(checkbox).parent().parent().find('td:nth-child(2) a.incomplete').removeClass('incomplete').addClass('complete');
-      
+      if ($(checkbox).parent().parent().is('tr'))
+        $title = $(checkbox).parent().parent().find('td:nth-child(2) a');
+      else
+        $title = $(checkbox).parent().parent().find('h3');
+
+      $title.removeClass('incomplete').addClass('complete');
+
       if (current_url(2) == 'incomplete') {
         $(checkbox).attr('disabled', 'disabled');
         $(checkbox).parent().parent().children().children().delay(200).fadeOut(fadeTime);
@@ -41,14 +46,16 @@
           $(checkbox).parent().parent().remove();
         }, fadeTime);
       }
-      else {
-
-      }
     
     }
     else {
     
-      $(checkbox).parent().parent().find('td:nth-child(2) a.complete').removeClass('complete').addClass('incomplete');
+      if ($(checkbox).parent().parent().is('tr'))
+        $title = $(checkbox).parent().parent().find('td:nth-child(2) a.complete');
+      else
+        $title = $(checkbox).parent().parent().find('h3');
+
+      $title.removeClass('complete').addClass('incomplete');
     
       if (current_url(2) == 'complete') {
         $(checkbox).attr('disabled', 'disabled');
