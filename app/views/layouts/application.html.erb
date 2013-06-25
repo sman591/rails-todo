@@ -16,19 +16,22 @@
       <li><a href="/all">All</a></li>
       <li><a href="/all/incomplete">Incomplete</a></li>
       <li><a href="/all/complete">Complete</a></li>
-      <li><a href="/new" class="btn btn-info"><i class="icon-white icon-plus"></i> New Todo</a><li>
+      <li><a href="/new" class="btn btn-info"><i class="icon-white icon-plus"></i> New Todo</a></li>
     </ul>
     <h3 class="muted"><a href="/">To-Do List</a></h3>
   </div>
 
   <hr>
 
+  <% if flash[:notice] %>
+    <div class="alert alert-success"><%= notice %></div>
+  <% end
+    if flash[:error] %>
+    <div class="alert alert-error"><%= flash[:error] %></div>
+  <% end %>
+
   <div class="row-fluid">
 
-	<% if flash[:notice] %>
-		<div class="alert alert-success"><%= notice %></div>
-	<% end %>
-  	
   	<%= yield %>
 
   </div>
