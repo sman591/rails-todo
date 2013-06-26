@@ -83,9 +83,7 @@ class TodoItemsController < ApplicationController
   def complete
     @todo_item = TodoItem.find(params[:id])
 
-    @todo_item.completed = (params[:completed] == '1' ? true : false);
-
-    @todo_item.save;
+    @todo_item.update_attribute(:completed, params[:completed])
 
     head :no_content
 
