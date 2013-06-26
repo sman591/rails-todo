@@ -39,19 +39,18 @@
     <button class="btn uncheck-all"><i class="icon-check-empty"> &nbsp;Uncomplete All</i></button>
   </div>
 <% else %>
-  <% if params[:completed] == false %>
 
+  <div id="no-incomplete"<%= params[:completed] == false ? '' : raw(' style="display: none;"') %>>
     <div class="cake pull-left"></div>
     <h5>Congratulations, you completed everything! <br>Here's some cake to celebrate.</h5>
-  
-  <%
-  elsif params[:completed] == nil %>
+  </div>
 
-    <h5>Oh no, you've run out of things to do! Quickly, <%= link_to raw('Create a new one!'), new_todo_item_path, :class => "btn btn-info" %>
-
-  <% else %>
-
+  <div id="no-todos"<%= params[:completed] == nil ? '' : raw(' style="display: none;"') %>>
+    <h5>Oh no, you've run out of things to do! Quickly, <%= link_to raw('Create a new one!'), new_todo_item_path, :class => "btn btn-info" %></h5>
+  </div>
+    
+  <div id="no-complete"<%= params[:completed] == true ? '' : raw(' style="display: none;"') %>>
     <h5>Looks like you haven't completed anything. Better get to work!</h5>
+  </div>
 
-  <% end %>
 <% end %>
