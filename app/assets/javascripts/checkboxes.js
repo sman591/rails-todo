@@ -2,6 +2,8 @@
 
   $().ready(function(){
 
+    /* All checkbox-relavent onReady code */
+
     $('.regular-checkbox').change(function() {
       checkbox_clicked(this); 
     });
@@ -15,7 +17,7 @@
 
   });
 
-  function current_url(num) {
+  function current_path_value_at(num) {
 
     var path = window.location.pathname.split('/');
     
@@ -76,7 +78,7 @@
 
       $title.removeClass('incomplete').addClass('complete');
 
-      if (current_url(2) == 'incomplete') {
+      if (current_path_value_at(2) == 'incomplete') {
         $(checkbox).attr('disabled', 'disabled');
         $(checkbox).parent().parent().children().children().delay(200).fadeOut(fadeTime);
         setTimeout(function() {
@@ -97,7 +99,7 @@
 
       $title.removeClass('complete').addClass('incomplete');
     
-      if (current_url(2) == 'complete') {
+      if (current_path_value_at(2) == 'complete') {
         $(checkbox).attr('disabled', 'disabled');
         $(checkbox).parent().parent().children().children().delay(200).fadeOut(fadeTime);
         setTimeout(function() {
