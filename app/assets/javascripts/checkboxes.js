@@ -70,7 +70,7 @@
       update_local();
 
       if ($(checkbox).parent().parent().is('tr'))
-        $title = $(checkbox).parent().parent().find('td:nth-child(2) a');
+        $title = $(checkbox).parents('tr').find('td:nth-child(2) a');
       else
         $title = $(checkbox).parent().parent().find('h3');
 
