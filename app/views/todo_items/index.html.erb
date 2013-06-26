@@ -46,7 +46,7 @@
 </div>
 
 <div id="no-todos"<%= @todo_items.empty? && params[:completed] == nil ? '' : raw(' style="display: none;"') %>>
-  <h5>Oh no, you've run out of things to do! Quickly, <%= link_to raw('Create a new one!'), new_todo_item_path, :class => "btn btn-info" %></h5>
+  <h5>Oh no, you've run out of things to do! Quickly, <%= link_to raw('Create a new one <i class="icon-chevron-right"></i>'), new_todo_item_path, :class => "btn btn-info" %></h5>
 </div>
   
 <div id="no-complete"<%= @todo_items.empty? && params[:completed] == true ? '' : raw(' style="display: none;"') %>>
