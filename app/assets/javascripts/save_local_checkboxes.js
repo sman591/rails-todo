@@ -26,7 +26,7 @@ function save_todo_items(data) {
 }
 
 function restore_local() {
-	console.log('restore');
+	debug('restore');
 
 	todo_items = get_todo_items();
 
@@ -72,7 +72,7 @@ function restore_local() {
 
 function update_local() {
 
-	console.log('update');
+	debug('update');
 
 	switch (current_path_value_at(2)) {
 		case 'complete':
@@ -93,11 +93,11 @@ function update_local() {
 
 function load_current_to_local() {
 
-	console.log('load current to local');
+	debug('load current to local');
 
 	todo_items = get_todo_items();
 
-	if (parseInt(current_path_value_at(2)) % 1 === 0) {
+	if (current_path_value_at(2) % 1 === 0) {
 		todo_items[current_path_value_at(2)] = {
 			'title'		: current_path_value_at(3) == 'edit' ? $('.todo-item input#todo_item_title').val() : $('.todo-item h3').text(),
 			'completed'	: ($('.todo-item input[type=checkbox]').is(':checked') ? '1' : '0')
@@ -107,9 +107,9 @@ function load_current_to_local() {
 
 		$('table.todo-list > tbody > tr').each(function() {
 
-			id 			= $(this).data('id');
-			title		= $(this).find('td:nth-child(2) a').text();
-			completed 	= $(this).find('td:nth-child(1) input[type=checkbox]').is(':checked') ? 1 : 0;
+			var id 			= $(this).data('id');
+			var title		= $(this).find('td:nth-child(2) a').text();
+			var completed 	= $(this).find('td:nth-child(1) input[type=checkbox]').is(':checked') ? 1 : 0;
 
 			todo_items[id] = {
 				'title'		: title,
@@ -126,7 +126,7 @@ function load_current_to_local() {
 
 function remove_deleted_from_local() {
 
-	console.log('remove deleted from local')
+	debug('remove deleted from local')
 
 	todo_items = get_todo_items();
 
@@ -144,7 +144,7 @@ function remove_deleted_from_local() {
 
 function init_local() {
 
-	console.log('init');
+	debug('init');
 
 	if (localStorage["todo_items"] == undefined || current_path_value_at(2) == undefined)
 		localStorage["todo_items"] = "";

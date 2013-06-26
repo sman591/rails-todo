@@ -52,8 +52,6 @@
         data: { completed: completed }
      });
 
-    update_local();
-
     sync_checkbox(checkbox, completed); 
 
   }
@@ -68,6 +66,8 @@
       
       if (!$(checkbox).is(":checked"))
         $(checkbox).prop('checked', true);
+
+      update_local();
 
       if ($(checkbox).parent().parent().is('tr'))
         $title = $(checkbox).parent().parent().find('td:nth-child(2) a');
@@ -90,6 +90,8 @@
     
       if ($(checkbox).is(":checked"))
         $(checkbox).prop('checked', false);
+
+      update_local();
 
       if ($(checkbox).parent().parent().is('tr'))
         $title = $(checkbox).parent().parent().find('td:nth-child(2) a.complete');

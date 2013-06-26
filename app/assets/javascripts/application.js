@@ -15,6 +15,15 @@
 //= require_tree .
 //= require bootstrap
 
+function debug(msg) {
+
+	var debug = false;
+
+	if (debug)
+		console.log(msg);
+
+}
+
 Object.size = function(obj) {
     var size = 0, key;
     for (key in obj) {
