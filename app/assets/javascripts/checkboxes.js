@@ -64,7 +64,7 @@
 
     /* Updates checkbox & title on page to reflect correct checkmark */
 
-    var fadeTime = 800;
+    var fadeTime = 500;
 
     if (completed == 1) {
       
@@ -80,9 +80,10 @@
 
       if (current_path_value_at(2) == 'incomplete') {
         $(checkbox).attr('disabled', 'disabled');
-        $(checkbox).parent().parent().children().children().delay(200).fadeOut(fadeTime);
+        $(checkbox).parent().parent().children().children().delay(fadeTime/4).fadeOut(fadeTime);
         setTimeout(function() {
           $(checkbox).parent().parent().remove();
+          sync_table_empty_messages();
         }, fadeTime);
       }
     
@@ -104,9 +105,30 @@
         $(checkbox).parent().parent().children().children().delay(200).fadeOut(fadeTime);
         setTimeout(function() {
           $(checkbox).parent().parent().remove();
+          sync_table_empty_messages();
         }, fadeTime);
       }
     
+    }
+
+  }
+
+  function sync_table_empty_messages() {
+
+    /* Display empty table message if table has no remaining rows */
+
+    if ($('table.todo-list > tbody > tr').size() < 1) {
+
+      if (current_path_value_at(2) == undefined)
+        id_extension = 'todos';
+      else
+        id_extension = current_path_value_at(2);
+
+      console.log('#no-' + id_extension);
+
+      $('.multi-actions').remove()
+      $('#no-' + id_extension).fadeIn(300);
+
     }
 
   }
