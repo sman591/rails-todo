@@ -17,14 +17,6 @@
 
   });
 
-  function current_path_value_at(num) {
-
-    var path = window.location.pathname.split('/');
-    
-    return path[num];
-    
-  }
-
   function checkbox_clicked(checkbox) {
 
     /* Handles when checkboxes get clicked */

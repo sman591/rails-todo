@@ -12,7 +12,7 @@
   </thead>
   <tbody>
     <% @todo_items.each do |todo| %>
-      <tr>
+      <tr data-id="<%= todo.id.to_s %>">
         <td>
           <%= check_box_tag "todo_item[" + todo.id.to_s + "][completed]", "1", todo.completed, :class => 'regular-checkbox' %>
           <%= label "todo_item[" + todo.id.to_s + "]", "completed", raw("&nbsp;") %>

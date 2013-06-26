@@ -7,7 +7,7 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body onload="mark_page_dirty()">
 
 <div class="container-narrow">
 
@@ -39,6 +39,8 @@
   <hr>
 
 </div>
-
+<form name="back_detector">
+  <input type="hidden" id="page_is_dirty" name="page_is_dirty" value="0" />
+</form>
 </body>
 </html>
