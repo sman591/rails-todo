@@ -22,6 +22,7 @@
     /* Handles when checkboxes get clicked */
 
     var completed; 
+
     if ($(checkbox).is(':checked')) {
       completed = '1';
     } else {
@@ -39,7 +40,10 @@
     var id = $("#" + $(checkbox).attr('id') + "_id").val();
     
     if (id == undefined) {
-      return;
+      if (current_path_value_at(2) % 1 == 0)
+        id = current_path_value_at(2);
+      else
+        return;
     }
 
     $.ajax({

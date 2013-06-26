@@ -34,12 +34,18 @@ function restore_local() {
 
 		id = current_path_value_at(2);
 
-		$('.todo-item h3').text(todo_items[id].title);
+		if (current_path_value_at(3) == 'edit')
+			$('.todo-item input#todo_item_title').val(todo_items[id].title);
+		else {
 
-		if (todo_items[id].completed == '1')
-			$('.todo-item h3').not('.complete').addClass('complete');
-		else
-			$('.todo-item h3.complete').removeClass('complete');
+			$('.todo-item h3').text(todo_items[id].title);
+
+			if (todo_items[id].completed == '1')
+				$('.todo-item h3').not('.complete').addClass('complete');
+			else
+				$('.todo-item h3.complete').removeClass('complete');
+
+		}
 
 		$('.todo-item input[type=checkbox]').prop('checked', (todo_items[id].completed == '1'));
 
@@ -87,11 +93,13 @@ function update_local() {
 
 function load_current_to_local() {
 
+	console.log('load current to local');
+
 	todo_items = get_todo_items();
 
 	if (parseInt(current_path_value_at(2)) % 1 === 0) {
 		todo_items[current_path_value_at(2)] = {
-			'title'		: $('.todo-item h3').text(),
+			'title'		: current_path_value_at(3) == 'edit' ? $('.todo-item input#todo_item_title').val() : $('.todo-item h3').text(),
 			'completed'	: ($('.todo-item input[type=checkbox]').is(':checked') ? '1' : '0')
 		};
 	}
@@ -117,6 +125,8 @@ function load_current_to_local() {
 }
 
 function remove_deleted_from_local() {
+
+	console.log('remove deleted from local')
 
 	todo_items = get_todo_items();
 
