@@ -48,7 +48,9 @@
         data: { completed: completed }
      });
 
-     sync_checkbox(checkbox, completed); 
+    update_local();
+
+    sync_checkbox(checkbox, completed); 
 
   }
 

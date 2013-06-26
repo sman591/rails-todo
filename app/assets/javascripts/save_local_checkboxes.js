@@ -27,6 +27,41 @@ function save_todo_items(data) {
 
 function restore_local() {
 	console.log('restore');
+
+	todo_items = get_todo_items();
+
+	if (parseInt(current_path_value_at(2)) % 1 === 0) {
+
+		id = current_path_value_at(2);
+
+		$('.todo-item h3').text(todo_items[id].title);
+
+		if (todo_items[id].completed == '1')
+			$('.todo-item h3').not('.complete').addClass('complete');
+		else
+			$('.todo-item h3.complete').removeClass('complete');
+
+		$('.todo-item input[type=checkbox]').prop('checked', (todo_items[id].completed == '1'));
+
+	}
+	else {
+
+		$('table.todo-list > tbody > tr').each(function() {
+
+			id = $(this).data('id');
+
+			$(this).find('td:nth-child(1) input[type=checkbox]').prop('checked', (todo_items[id].completed == '1'));
+			$(this).find('td:nth-child(2) a').text(todo_items[id].title);
+
+			if (todo_items[id].completed == '1')
+				$(this).find('td:nth-child(2) a').not('.complete').addClass('complete');
+			else
+				$(this).find('td:nth-child(2) a').removeClass('complete');
+
+		});
+
+	}
+
 }
 
 function update_local() {
