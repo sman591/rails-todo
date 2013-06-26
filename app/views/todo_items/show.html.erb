@@ -1,4 +1,4 @@
-<div class="page-header row-fluid">
+<div class="page-header row-fluid todo-item">
 	<div class="span1">
       <%= check_box_tag "todo_item[" + @todo_item.id.to_s + "][completed]", "1", @todo_item.completed, :class => 'regular-checkbox' %>
       <%= label "todo_item[" + @todo_item.id.to_s + "]", "completed", raw("&nbsp;"), :style => 'margin-top: 16px; margin-left: 13px' %>
